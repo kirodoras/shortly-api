@@ -1,5 +1,5 @@
 import connection from "../databases/postgres.js";
-import { encode } from "../providers/bcrypt.provider.js";
+import { encode, verify } from "../providers/bcrypt.provider.js";
 
 export async function signup(req, res) {
   try {
@@ -10,6 +10,14 @@ export async function signup(req, res) {
       [name, email, hash]
     );
     res.sendStatus(201);
+  } catch (err) {
+    res.sendStatus(500);
+  }
+}
+
+export async function signin(req, res) {
+  try {
+    res.status(200).send(res.locals.token);
   } catch (err) {
     res.sendStatus(500);
   }
