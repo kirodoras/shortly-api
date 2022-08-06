@@ -59,3 +59,16 @@ export async function redirectToUrl(req, res) {
     res.sendStatus(500);
   }
 }
+
+export async function deleteShortenById(req, res) {
+  try {
+    const { id } = req.params;
+    await connection.query(
+      `DELETE FROM urls WHERE id = $1`,
+      [id]
+    );
+    res.sendStatus(204);
+  } catch (err) {
+    res.sendStatus(500);
+  }
+}
