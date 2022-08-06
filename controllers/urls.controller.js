@@ -48,7 +48,7 @@ export async function redirectToUrl(req, res) {
     );
     if (!rows[0]) {
       res.sendStatus(404);
-      return
+      return;
     }
     await connection.query(
       `UPDATE urls SET "visitCount" = "visitCount" + 1 WHERE "shortUrl" = $1`,
@@ -63,10 +63,7 @@ export async function redirectToUrl(req, res) {
 export async function deleteShortenById(req, res) {
   try {
     const { id } = req.params;
-    await connection.query(
-      `DELETE FROM urls WHERE id = $1`,
-      [id]
-    );
+    await connection.query(`DELETE FROM urls WHERE id = $1`, [id]);
     res.sendStatus(204);
   } catch (err) {
     res.sendStatus(500);

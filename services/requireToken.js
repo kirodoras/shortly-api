@@ -16,7 +16,7 @@ export async function requireToken(req, res, next) {
     [token]
   );
   if (rows.length === 0) {
-    return res.sendStatus(401);
+    return res.sendStatus(404);
   }
   console.log(rows[0].userId);
   res.locals.userId = rows[0].userId;
