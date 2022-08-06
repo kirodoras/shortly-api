@@ -17,3 +17,23 @@ export async function shorten(req, res) {
     res.sendStatus(500);
   }
 }
+
+export async function getShortenById(req, res) {
+  try {
+    const { id } = req.params;
+    const { rows } = await connection.query(
+      `SELECT * FROM urls WHERE id = $1`,
+      [id]
+    );
+    if (!rows[0]) {
+      res.sendStatus(404);
+    }
+    res.status(200).send({
+      id: rows[0].id,
+      shortUrl: rows[0].shortUrl,
+      url: rows[0].url,
+    });
+  } catch (err) {
+    res.sendStatus(500);
+  }
+}
