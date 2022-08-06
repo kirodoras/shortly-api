@@ -27,12 +27,34 @@ export async function getShortenById(req, res) {
     );
     if (!rows[0]) {
       res.sendStatus(404);
+      return;
     }
     res.status(200).send({
       id: rows[0].id,
       shortUrl: rows[0].shortUrl,
       url: rows[0].url,
     });
+  } catch (err) {
+    res.sendStatus(500);
+  }
+}
+
+export async function redirectToUrl(req, res) {
+  try {
+    const { shortUrl } = req.params;
+    const { rows } = await connection.query(
+      `SELECT * FROM urls WHERE "shortUrl" = $1`,
+      [shortUrl]
+    );
+    if (!rows[0]) {
+      res.sendStatus(404);
+      return
+    }
+    await connection.query(
+      `UPDATE urls SET "visitCount" = "visitCount" + 1 WHERE "shortUrl" = $1`,
+      [shortUrl]
+    );
+    res.redirect(rows[0].url);
   } catch (err) {
     res.sendStatus(500);
   }
