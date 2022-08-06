@@ -1,5 +1,6 @@
 import express from "express";
 import authRouter from "./auth.route.js";
+import rankingRouter from "./ranking.route.js";
 import urlsRouter from "./urls.route.js";
 import usersRouter from "./users.route.js";
 
@@ -10,5 +11,6 @@ router.get("/", (req, res) => {
 router.use(authRouter);
 router.use(urlsRouter);
 router.use(usersRouter);
+router.use(rankingRouter)
 
 export default router;
