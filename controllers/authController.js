@@ -1,5 +1,5 @@
 import connection from "../databases/postgres.js";
-import { encode, verify } from "../providers/bcrypt.provider.js";
+import { encode, verify } from "../providers/bcryptProvider.js";
 
 export async function signup(req, res) {
   try {

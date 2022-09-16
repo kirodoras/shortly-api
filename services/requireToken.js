@@ -1,5 +1,5 @@
 import connection from "../databases/postgres.js";
-import { tokenSchema } from "../schemas/token.schema.js";
+import { tokenSchema } from "../schemas/tokenSchema.js";
 
 export async function requireToken(req, res, next) {
   const { authorization } = req.headers;

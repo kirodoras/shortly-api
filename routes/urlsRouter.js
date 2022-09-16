@@ -5,11 +5,11 @@ import {
   getShortenById,
   redirectToUrl,
   deleteShortenById,
-} from "../controllers/urls.controller.js";
+} from "../controllers/urlsController.js";
 import {
   validateUrl,
   checkUserOwnerUrl,
-} from "../middlewares/urls.middleware.js";
+} from "../middlewares/urlsMiddleware.js";
 
 const urlsRouter = express.Router();
 

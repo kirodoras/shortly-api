@@ -1,5 +1,5 @@
 import connection from "../databases/postgres.js";
-import { urlSchema } from "../schemas/urls.schema.js";
+import { urlSchema } from "../schemas/urlsSchema.js";
 
 export async function validateUrl(req, res, next) {
   const { url } = req.body;

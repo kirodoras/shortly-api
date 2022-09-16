@@ -1,8 +1,8 @@
 import express from "express";
-import authRouter from "./auth.route.js";
-import rankingRouter from "./ranking.route.js";
-import urlsRouter from "./urls.route.js";
-import usersRouter from "./users.route.js";
+import authRouter from "./authRouter.js";
+import rankingRouter from "./rankingRouter.js";
+import urlsRouter from "./urlsRouter.js";
+import usersRouter from "./usersRouter.js";
 
 const router = express.Router();
 router.get("/", (req, res) => {

@@ -1,6 +1,6 @@
 import connection from "../databases/postgres.js";
-import { authSignupSchema, authSigninSchema } from "../schemas/auth.schema.js";
-import { verify } from "../providers/bcrypt.provider.js";
+import { authSignupSchema, authSigninSchema } from "../schemas/authSchema.js";
+import { verify } from "../providers/bcryptProvider.js";
 import { v4 as uuid } from "uuid";
 
 export function validateSignup(req, res, next) {
